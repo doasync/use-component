@@ -10,7 +10,7 @@
 [telegram-image]: http://i.imgur.com/WANXk3d.png
 [telegram-url]: https://t.me/doasync
 
-Use component from prop or context, or fallback to specified component
+Get the resulting component you want to wrap inside your target component by checking props, context or a fallback.
 
 ## Installation
 
@@ -21,16 +21,19 @@ or
 ```bash
 yarn add use-component
 ```
+## Example
+
+https://codesandbox.io/s/vm2zlr1qo3
 
 ## Usage
 
-#### `useComponent`
+### `useComponent`
 
 ```js
 import { useComponent } from 'use-component'
 ```
 
-Pass an entry of component itself, component, fallback, or components to the hook and get a resulting component:
+Pass an entry of current component to the hook (this means that you need wrap your current component in an object and pass it to the entry option) as well as component from prop, a fallback, or an object of components and you will get a resulting component:
 
 ```js
 export const Input = ({
@@ -70,6 +73,17 @@ export const Input = ({
 
 You can now pass any component as prop which will be used inside `Input` component. You can pass a styled component, for example, or any custom component, which will receive internal `input`, `meta`, `label` and `message` props.
 
+```js
+<Input
+  component={CustomInput}
+  type="password"
+  name="password"
+  placeholder="Password"
+/>
+```
+
+### `ComponentsContext`
+
 You can also create a context provider:
 
 ```js
@@ -90,11 +104,11 @@ export const Form = ({
   const { handleSubmit } = useContext(FormContext);
 
   return (
-    <ComponentContext.Provider value={components}>
+    <ComponentsContext.Provider value={components}>
       <Component onSubmit={onSubmit || handleSubmit} {...otherProps}>
         {children}
       </Component>
-    </ComponentContext.Provider>
+    </ComponentsContext.Provider>
   );
 };
 ```
@@ -133,7 +147,7 @@ And then just pass your components to it:
   </Form>
 ```
 
-You can still use your original `Input` and `ErrorMessage`, but they will use specified components under the hood passing to them some internal props.
+You can still use your original `Input` and `ErrorMessage`, but they will use your specified components under the hood passing  some internal props to them.
 
 ### Tip
 
