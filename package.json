@@ -1,0 +1,26 @@
+{
+  "name": "use-component",
+  "description": "useComponent React hook",
+  "version": "0.0.0",
+  "author": {
+    "name": "DoAsync",
+    "email": "doasync@gmail.com"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.8.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/doasync/use-component.git"
+  },
+  "keywords": [
+    "use component",
+    "component",
+    "use",
+    "hook",
+    "hooks",
+    "react"
+  ],
+  "license": "MIT"
+}
